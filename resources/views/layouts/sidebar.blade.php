@@ -8,10 +8,10 @@
         </li>
     @endif
     <li class="nav-item">
-        <a href="profile.html">Profile</a>                               
+        <a href="{{ route('account.profile') }}">Profile</a>                               
     </li>
     <li class="nav-item">
-        <a href="my-reviews.html">My Reviews</a>
+        <a href="{{ route('reviews.myReviews') }}">My Reviews</a>
     </li>
     <li class="nav-item">
         <a href="change-password.html">Change Password</a>

@@ -139,8 +139,8 @@
                                                             <i class="fa fa-star" aria-hidden="true"></i>
                                                             <i class="fa fa-star" aria-hidden="true"></i>
                         
-                                                            <div class="front-stars" style="width: {{ $ratingPer }}%">
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                            <div class="front-stars" style="width: {{$ratingPer}}%">
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
                                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                                                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -175,7 +175,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Review for <strong>Atomic Habits</strong></h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Review for <strong></strong></h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="" id="bookRreviewForm" name="bookRreviewForm">

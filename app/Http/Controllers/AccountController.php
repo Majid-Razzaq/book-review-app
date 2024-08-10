@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
@@ -125,4 +126,61 @@ class AccountController extends Controller
         Auth::logout();
         return redirect()->route('account.login');
     }
+
+    
+    public function myReviews(Request $request){
+        $reviews = Review::where('user_id',Auth::user()->id);
+        $reviews = $reviews->orderBy('created_at','DESC');
+
+        if(!empty($request->keyword))
+        {
+            $reviews = $reviews->where('review','like','%'.$request->keyword.'%');
+        }
+
+        $reviews = $reviews->paginate(10);
+        return view('account.my-reviews',[
+            'reviews' => $reviews,
+        ]);
+    }
+
+    // delete my reviews using this function
+    public function deleteMyReview($id){
+        $reviews = Review::find($id);
+        if($reviews == null){
+            return response()->json([
+                'status' => false,
+                'message' => 'Review not found',
+            ]);
+        }else{
+            $reviews->delete();
+            Session()->flash('success','Review deleted successfully.');
+        }
+    }
+
+    public function editMyReview($id){
+        $review = Review::findOrFail($id);
+        return view('account.edit-myReview',[
+            'review' => $review,
+        ]);
+    }
+
+    public function updateMyReview(Request $request, $id){
+        $review = Review::findOrFail($id);
+        $rules = [
+            'review' => 'required',
+            'rating' => 'required',
+        ];
+        $validator = Validator::make($request->all(),$rules);
+        if($validator->fails()){
+            return redirect()->route('reviews.editMyReview', $review->id)->withInput()->withErrors($validator);
+        }
+
+        $review->review = $request->review;
+        $review->rating = $request->rating;
+        $review->save();
+
+        session()->flash('success','Review updated successfully.');
+        return redirect()->route('reviews.myReviews');
+    }
+
 }

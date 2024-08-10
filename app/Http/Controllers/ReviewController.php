@@ -59,8 +59,9 @@ class ReviewController extends Controller
         $review->status = $request->status;
         $review->save();
 
-        session()->flash('success','Review updates successfully.');
+        session()->flash('success','Review updated successfully.');
         return redirect()->route('books.reviews');
     }
+    
 }
  
