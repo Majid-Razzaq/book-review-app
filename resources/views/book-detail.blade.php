@@ -16,12 +16,21 @@
                             <img src="https://placehold.co/990x1400?text = No Image" alt="" class="card-img-top">    
                         @endif
                 </div>
+                @php
+                    if($book->reviews_count > 0){
+                        $avgRating = $book->reviews_sum_rating/$book->reviews_count;
+                    }else{
+                        $avgRating = 0;
+                    }
+                    $avgRatingPer = ($avgRating*100)/5;
+                @endphp
+                    
                     <div class="col-md-8">
                         @include('layouts.message')
                         <h3 class="h2 mb-3">{{ $book->title }}</h3>
                         <div class="h4 text-muted">{{ $book->author }}</div>
                         <div class="star-rating d-inline-flex ml-2" title="">
-                            <span class="rating-text theme-font theme-yellow">5.0</span>
+                            <span class="rating-text theme-font theme-yellow">{{ number_format($avgRating,1) }}</span>
                             <div class="star-rating d-inline-flex mx-2" title="">
                                 <div class="back-stars ">
                                     <i class="fa fa-star " aria-hidden="true"></i>
@@ -30,7 +39,7 @@
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
 
-                                    <div class="front-stars" style="width: 100%">
+                                    <div class="front-stars" style="width: {{ $avgRatingPer }}%">
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
@@ -39,8 +48,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <span class="theme-font text-muted">(0 Review)</span>
-                        </div>
+                            <span class="theme-font text-muted">({{ ($book->reviews_count > 1) ? $book->reviews_count.'Reviews' : 'Review' }})</span>
+                            </div>
 
                         <div class="content mt-3">
                             <p>
@@ -67,12 +76,21 @@
                                         <img src="https://placehold.co/990x1400?text = No Image" alt="" class="card-img-top">    
                                         @endif
                                     </a>
+                                    @php
+                                        if($relatedBook->reviews_count > 0){
+                                            $avgRating = $relatedBook->reviews_sum_rating/$relatedBook->reviews_count;
+                                        }else{
+                                            $avgRating = 0;
+                                        }
+                                        $avgRatingPer = ($avgRating*100)/5;
+                                        @endphp
+                                        
                                         <div class="card-body">
                                             <h3 class="h4 heading"><a href="{{ route('book.detail',$relatedBook->id) }}">
                                             {{ $relatedBook->title }}</a></h3>
                                             <p>{{ $relatedBook->author }}</p>
                                             <div class="star-rating d-inline-flex ml-2" title="">
-                                                <span class="rating-text theme-font theme-yellow">0.0</span>
+                                                <span class="rating-text theme-font theme-yellow">{{ number_format($avgRating,1) }}</span>
                                                 <div class="star-rating d-inline-flex mx-2" title="">
                                                     <div class="back-stars ">
                                                         <i class="fa fa-star " aria-hidden="true"></i>
@@ -81,7 +99,7 @@
                                                         <i class="fa fa-star" aria-hidden="true"></i>
                                                         <i class="fa fa-star" aria-hidden="true"></i>
                     
-                                                        <div class="front-stars" style="width: 70%">
+                                                        <div class="front-stars" style="width: {{ $avgRatingPer }}%">
                                                             <i class="fa fa-star" aria-hidden="true"></i>
                                                             <i class="fa fa-star" aria-hidden="true"></i>
                                                             <i class="fa fa-star" aria-hidden="true"></i>
@@ -90,7 +108,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <span class="theme-font text-muted">(0)</span>
+                                                <span class="theme-font text-muted">({{ ($relatedBook->reviews_count > 1) ? $relatedBook->reviews_count.'Reviews' : 'Review' }})</span>
                                             </div>
                                         </div>
                                     </div>

@@ -5,30 +5,7 @@
 <div class="container">
         <div class="row my-5">
             <div class="col-md-3">
-                <div class="card border-0 shadow-lg">
-                    <div class="card-header  text-white">
-                        Welcome, {{ Auth::user()->name }}               
-                    </div>
-                    <div class="card-body">
-                        <div class="text-center mb-3">
-                            @if(Auth::user()->image != "")
-                                <img src="{{ asset('uploads/profile/thumb/'.Auth::user()->image) }}" class="img-fluid rounded-circle" alt="Luna John">                            
-                            @endif
-                        </div>
-                        <div class="h5 text-center">
-                            <strong>{{ Auth::user()->name }}</strong>
-                            <p class="h6 mt-2 text-muted">5 Reviews</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card border-0 shadow-lg mt-3">
-                    <div class="card-header  text-white">
-                        Navigation
-                    </div>
-                    <div class="card-body sidebar">
-                        @include('layouts/sidebar')
-                    </div>
-                </div>
+                @include('layouts/sidebar')
             </div>
             <div class="col-md-9">
                 @include('layouts.message')
@@ -59,10 +36,19 @@
                                 <tbody>
                                         @if($books->isNotEmpty())
                                             @foreach($books as $book)
+
+                                            @php
+                                                if($book->reviews_count > 0){
+                                                    $avgRating = $book->reviews_sum_rating/$book->reviews_count;
+                                                }else{
+                                                    $avgRating = 0;
+                                                }
+                                                $avgRatingPer = ($avgRating*100)/5;
+                                            @endphp
                                             <tr>
                                                 <td>{{ $book->title }}</td>
                                                 <td>{{ $book->author }}</td>
-                                                <td>3.0 (3 Reviews)</td>
+                                                <td>{{ number_format($avgRating,1) }} ({{ ($book->reviews_count > 1) ? $book->reviews_count.' Reviews' : $book->reviews_count.' Review' }})</td>
                                                 <td>
                                                     @if($book->status == 1)    
                                                         <span class="text-success">Active</span>

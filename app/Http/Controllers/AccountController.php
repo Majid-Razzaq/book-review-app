@@ -138,7 +138,7 @@ class AccountController extends Controller
         }
 
         $reviews = $reviews->paginate(10);
-        return view('account.my-reviews',[
+        return view('account.my-reviews.my-reviews',[
             'reviews' => $reviews,
         ]);
     }
@@ -154,15 +154,23 @@ class AccountController extends Controller
         }else{
             $reviews->delete();
             Session()->flash('success','Review deleted successfully.');
+            return response()->json([
+                'status' => true,
+                'message' => 'Review deleted successfully.',
+            ]);
         }
     }
 
     public function editMyReview($id){
-        $review = Review::findOrFail($id);
-        return view('account.edit-myReview',[
+        $review = Review::where([
+            'id' => $id,
+            'user_id' => Auth::user()->id,
+        ])->with('book')->first();
+        return view('account.my-reviews.edit-myReview',[
             'review' => $review,
         ]);
     }
+    
 
     public function updateMyReview(Request $request, $id){
         $review = Review::findOrFail($id);
