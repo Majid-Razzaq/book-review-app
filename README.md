@@ -2,9 +2,6 @@
     <a href="https://laravel.com" target="_blank" style="display: inline-block;">
         <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
     </a>
-    <a href="https://stripe.com" target="_blank" style="display: inline-block;">
-        <img src="https://stripe.com/img/v3/home/twitter.png" width="130" alt="Stripe Logo">
-    </a>
 </p>
 
 ## Book Reviews App
@@ -12,7 +9,7 @@
 A Laravel-based application where users can register, log in, and access a personal dashboard. Users can view book details, give reviews, edit or delete their reviews, and update their profile, including profile image, name, and password. Admins have the ability to approve user reviews and manage all book details displayed on the home page.
 
 ## Live Website
-[Book Reviews App](https://book-reviews.lovestoblog.com)
+[Book Reviews App]([https://book-reviews.lovestoblog.com](http://book-reviews.lovestoblog.com/))
 
 ## Requirements
 -  Laravel = 11.20.0
