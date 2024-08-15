@@ -11,6 +11,14 @@ A Laravel-based application where users can register, log in, and access a perso
 ## Live Website
 [Book Reviews App](http://book-reviews.lovestoblog.com/)
 
+## Features
+
+- **User Registration and Login:** Secure user authentication with personalized dashboards.
+- **User Dashboard:** Users can view book details, submit reviews, and manage their profile.
+- **Review Management:** Users can edit or delete their reviews, with admin approval required for posting.
+- **Profile Management:** Users can update their profile information, including profile picture and password.
+- **Admin Dashboard:** Admins can manage book details displayed on the homepage and approve user reviews.
+
 ## Requirements
 -  Laravel = 11.20.0
 -  PHP = 8.2.12
