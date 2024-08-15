@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="{{ asset('uploads/books/logo.png') }}"/>
         <title>Book Review App</title>
         <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -12,7 +13,9 @@
         <div class="container-fluid shadow-lg header">
             <div class="container">
                 <div class="d-flex justify-content-between">
-                    <h1 class="text-center"><a href="{{ route('home') }}" class="h3 text-white text-decoration-none">Book Review App</a></h1>
+                <a class="navbar-brand" href="{{ route('home') }}">
+                    <img src="{{ asset('uploads/books/logo.png') }}" alt="" width="130px" height="100px">
+                </a>
                     <div class="d-flex align-items-center navigation">
                         @if(Auth::check())
                             <a href="{{ route('account.profile')}}" class="text-white">My account</a>

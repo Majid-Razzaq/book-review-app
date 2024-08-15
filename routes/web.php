@@ -44,6 +44,8 @@ Route::group(['prefix'=>'account'], function(){
         Route::delete('delete-myreview/{id}',[AccountController::class,'deleteMyReview'])->name('reviews.deleteMyReview');
         Route::get('my-reviews/edit/{id}',[AccountController::class,'editMyReview'])->name('reviews.editMyReview');
         Route::post('my-reviews/update/{id}',[AccountController::class,'updateMyReview'])->name('reviews.updateMyReview');
+        Route::get('change-password',[AccountController::class,'changePasswordForm'])->name('account.changePasswordForm');
+        Route::post('change-password',[AccountController::class,'updatePassword'])->name('account.updatePassword');
 
     }); 
 

@@ -43,7 +43,7 @@
                                             @if($review->status == 1)
                                                 <span class="text-success">Active</span>
                                             @else
-                                                <span class="text-danger">Active</span>
+                                                <span class="text-danger">Block</span>
                                             @endif
                                             </td>
                                             <td>

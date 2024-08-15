@@ -191,4 +191,34 @@ class AccountController extends Controller
         return redirect()->route('reviews.myReviews');
     }
 
+    // This function will redirect change password page
+    public function changePasswordForm(){
+        return view('account.change-password');
+    }
+
+    // This function will update the password
+    public function updatePassword(Request $request){
+        $user = User::where('id',Auth::user()->id)->first();
+        $rules = [
+            'old_password' => 'required|min:5',
+            'new_password' => 'required|min:5',
+            'password_confirmation' => 'required|same:new_password',
+        ];
+
+        $validator = Validator::make($request->all(),$rules);
+        if($validator->fails()){
+            return redirect()->route('account.changePasswordForm')->withInput()->withErrors($validator);
+        }else{
+            if(!Hash::check($request->old_password, $user->password)){
+                Session()->flash('error','Your old password is incorrect, please try again.');
+            }else{
+                User::where('id',Auth::user()->id)->update([
+                    'password' => Hash::make($request->new_password)
+                ]);
+                return redirect()->route('account.changePasswordForm')->with('success','Your password updated successfully.');
+            }
+        }
+
+    }
+
 }
