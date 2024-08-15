@@ -9,7 +9,7 @@
 A Laravel-based application where users can register, log in, and access a personal dashboard. Users can view book details, give reviews, edit or delete their reviews, and update their profile, including profile image, name, and password. Admins have the ability to approve user reviews and manage all book details displayed on the home page.
 
 ## Live Website
-[Book Reviews App]([https://book-reviews.lovestoblog.com](http://book-reviews.lovestoblog.com/))
+[Book Reviews App](http://book-reviews.lovestoblog.com/)
 
 ## Requirements
 -  Laravel = 11.20.0
