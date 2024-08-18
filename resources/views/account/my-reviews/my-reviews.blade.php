@@ -73,7 +73,7 @@
         function deleteReview(id){
             if(confirm("Are you sure you want to delete?")){
                 $.ajax({
-                    url: '{{ route("reviews.deleteMyReview",$review->id) }}',
+                    url: '{{ route("reviews.deleteMyReview") }}',
                     type:'delete',
                     data: {id:id},
                     headers:{

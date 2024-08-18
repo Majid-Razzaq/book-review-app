@@ -60,7 +60,7 @@ class AccountController extends Controller
         }
         // Check user is valid 
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password ])){
-            return redirect()->route('account.profile');
+            return redirect()->route('home');
         }else{
             return redirect()->route('account.login')->with('error','Either email or password is invalid.');
         }
@@ -144,8 +144,8 @@ class AccountController extends Controller
     }
 
     // delete my reviews using this function
-    public function deleteMyReview($id){
-        $reviews = Review::find($id);
+    public function deleteMyReview(Request $request){
+        $reviews = Review::find($request->id);
         if($reviews == null){
             return response()->json([
                 'status' => false,
