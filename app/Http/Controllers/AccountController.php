@@ -136,7 +136,6 @@ class AccountController extends Controller
         {
             $reviews = $reviews->where('review','like','%'.$request->keyword.'%');
         }
-
         $reviews = $reviews->paginate(10);
         return view('account.my-reviews.my-reviews',[
             'reviews' => $reviews,
@@ -171,7 +170,6 @@ class AccountController extends Controller
         ]);
     }
     
-
     public function updateMyReview(Request $request, $id){
         $review = Review::findOrFail($id);
         $rules = [
