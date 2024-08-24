@@ -19,7 +19,7 @@
                                 <div class="d-flex">
                                     <input type="text" value="{{ Request::get('keyword') }}" class="form-control" placeholder="keyword" name="keyword">
                                     <button type="submit" class="btn btn-primary ms-2">Search</button>
-                                    <a href="{{ route('reviews.myReviews') }}" class="btn btn-secondary ms-2">Clear</a>
+                                    <a href="{{ route('account.myReviews') }}" class="btn btn-secondary ms-2">Clear</a>
                                 </div>
                             </form> 
                     </div>            
@@ -47,7 +47,7 @@
                                             @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('reviews.editMyReview',$review->id) }}" class="btn btn-primary btn-sm"><i class="fa-regular fa-pen-to-square"></i>
+                                                <a href="{{ route('account.editMyReview',$review->id) }}" class="btn btn-primary btn-sm"><i class="fa-regular fa-pen-to-square"></i>
                                                 </a>
                                                 <a href="javascript:void(0);" onclick="deleteReview('{{ $review->id }}')" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
                                             </td>
@@ -73,7 +73,7 @@
         function deleteReview(id){
             if(confirm("Are you sure you want to delete?")){
                 $.ajax({
-                    url: '{{ route("reviews.deleteMyReview") }}',
+                    url: '{{ route("account.deleteMyReview") }}',
                     type:'delete',
                     data: {id:id},
                     headers:{
@@ -81,7 +81,7 @@
                     },
                     dataType: 'json',
                     success: function(response){
-                        window.location.href = '{{ route("reviews.myReviews") }}';
+                        window.location.href = '{{ route("account.myReviews") }}';
                     }
 
                 }); 

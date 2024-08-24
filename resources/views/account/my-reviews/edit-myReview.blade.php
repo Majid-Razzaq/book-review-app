@@ -14,7 +14,7 @@
                         Edit Reviews
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('reviews.updateMyReview',$review->id) }}" method="POST">
+                        <form action="{{ route('account.updateMyReview',$review->id) }}" method="POST">
                         @csrf
 
                         <div class="mb-3">

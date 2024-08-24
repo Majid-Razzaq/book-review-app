@@ -186,7 +186,7 @@ class AccountController extends Controller
         $review->save();
 
         session()->flash('success','Review updated successfully.');
-        return redirect()->route('reviews.myReviews');
+        return redirect()->route('account.myReviews');
     }
 
     // This function will redirect change password page
